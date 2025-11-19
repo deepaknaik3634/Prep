@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { forwardRef, HTMLAttributes, ReactNode } from 'react'
+import { forwardRef, HTMLAttributes, ReactNode, useState } from 'react'
+import React from 'react'
 import { cn } from '@/lib/utils'
 import { getInitials } from '@/lib/utils'
 
