@@ -41,35 +41,89 @@
 /* Custom neumorphism component classes */
 @layer components {
   .neumorphic {
-    @apply bg-neumorphic rounded-neumorphic shadow-neumorphic transition-all duration-300 ease-in-out;
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: 9px 9px 16px var(--neumorphic-dark), -9px -9px 16px var(--neumorphic-light);
+    transition: all 0.3s ease-in-out;
   }
 
   .neumorphic-flat {
-    @apply bg-neumorphic rounded-neumorphicSm shadow-neumorphicFlat transition-all duration-300 ease-in-out;
+    background: var(--background);
+    border-radius: 12px;
+    box-shadow: 3px 3px 6px var(--neumorphic-dark), -3px -3px 6px var(--neumorphic-light);
+    transition: all 0.3s ease-in-out;
   }
 
   .neumorphic-inset {
-    @apply bg-neumorphic rounded-neumorphic shadow-neumorphicInset transition-all duration-300 ease-in-out;
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: inset 6px 6px 12px var(--neumorphic-dark), inset -6px -6px 12px var(--neumorphic-light);
+    transition: all 0.3s ease-in-out;
   }
 
   .neumorphic-button {
-    @apply neumorphic px-6 py-3 font-medium text-foreground hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: 9px 9px 16px var(--neumorphic-dark), -9px -9px 16px var(--neumorphic-light);
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: var(--foreground);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .neumorphic-button:hover {
+    transform: scale(1.05);
+  }
+
+  .neumorphic-button:active {
+    transform: scale(0.95);
+  }
+
+  .neumorphic-button:focus {
+    outline: none;
+    box-shadow: 9px 9px 16px var(--neumorphic-dark), -9px -9px 16px var(--neumorphic-light), 0 0 0 2px theme('colors.primary.500');
   }
 
   .neumorphic-input {
-    @apply neumorphic-inset px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-primary-500 placeholder:text-gray-500;
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: inset 6px 6px 12px var(--neumorphic-dark), inset -6px -6px 12px var(--neumorphic-light);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    color: var(--foreground);
+    border: none;
+  }
+
+  .neumorphic-input:focus {
+    outline: none;
+    box-shadow: inset 6px 6px 12px var(--neumorphic-dark), inset -6px -6px 12px var(--neumorphic-light), 0 0 0 2px theme('colors.primary.500');
   }
 
   .neumorphic-card {
-    @apply neumorphic p-6 hover:shadow-lg hover:scale-105 transition-all duration-300;
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: 9px 9px 16px var(--neumorphic-dark), -9px -9px 16px var(--neumorphic-light);
+    padding: 1.5rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .neumorphic-card:hover {
+    box-shadow: 12px 12px 20px var(--neumorphic-dark), -12px -12px 20px var(--neumorphic-light);
+    transform: scale(1.05);
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+    background: linear-gradient(to right, theme('colors.primary.600'), theme('colors.secondary.600'));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .glassmorphism {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
