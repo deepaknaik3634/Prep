@@ -21,7 +21,7 @@
   }
 
   * {
-    border-color: theme('colors.neumorphic.light');
+    border-color: var(--neumorphic-light);
   }
 
   html {
@@ -29,7 +29,8 @@
   }
 
   body {
-    @apply bg-neumorphic text-foreground;
+    background: var(--background);
+    color: var(--foreground);
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
