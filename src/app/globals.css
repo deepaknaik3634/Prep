@@ -1,26 +1,138 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* Custom neumorphism base styles */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #e0e5ec;
+    --foreground: #2d3748;
+    --neumorphic-light: #ffffff;
+    --neumorphic-dark: #a3b1c6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #2d3748;
+      --foreground: #e0e5ec;
+      --neumorphic-light: #4a5568;
+      --neumorphic-dark: #1a202c;
+    }
+  }
+
+  * {
+    border-color: theme('colors.neumorphic.light');
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-neumorphic text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom neumorphism component classes */
+@layer components {
+  .neumorphic {
+    @apply bg-neumorphic rounded-neumorphic shadow-neumorphic transition-all duration-300 ease-in-out;
+  }
+
+  .neumorphic-flat {
+    @apply bg-neumorphic rounded-neumorphicSm shadow-neumorphicFlat transition-all duration-300 ease-in-out;
+  }
+
+  .neumorphic-inset {
+    @apply bg-neumorphic rounded-neumorphic shadow-neumorphicInset transition-all duration-300 ease-in-out;
+  }
+
+  .neumorphic-button {
+    @apply neumorphic px-6 py-3 font-medium text-foreground hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .neumorphic-input {
+    @apply neumorphic-inset px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-primary-500 placeholder:text-gray-500;
+  }
+
+  .neumorphic-card {
+    @apply neumorphic p-6 hover:shadow-lg hover:scale-105 transition-all duration-300;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hover-lift {
+    @apply hover:transform hover:-translate-y-1 transition-transform duration-200;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neumorphic;
+  }
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neumorphic-light);
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neumorphic-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Selection text */
+::selection {
+  @apply bg-primary-200 text-primary-900;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  @apply focus-ring;
 }
