@@ -179,16 +179,18 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-neumorphic-dark rounded-full;
+  background: var(--neumorphic-dark);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  background: theme('colors.gray.500');
 }
 
 /* Selection text */
 ::selection {
-  @apply bg-primary-200 text-primary-900;
+  background: theme('colors.primary.200');
+  color: theme('colors.primary.900');
 }
 
 /* Focus visible for accessibility */
